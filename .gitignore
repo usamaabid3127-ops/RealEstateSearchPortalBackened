@@ -1,0 +1,57 @@
+# .NET
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# User-specific files
+*.rsuser
+*.userprefs
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+# NuGet
+.nuget/
+*.nupkg
+nuget.exe
+
+# VS Code
+.vscode/
+
+# Secrets
+appsettings.Development.json
+secrets.json
+
+# SQL Server
+*.mdf
+*.ldf
+
+# Docker
+.docker/
+docker-compose.*.yml
+docker-compose.*.yaml
+*/docker-compose.*
+
+# Local History
+.history/
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# macOS
+.DS_Store
