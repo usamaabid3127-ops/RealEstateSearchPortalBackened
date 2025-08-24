@@ -12,8 +12,8 @@ using RealEstateSearchPortal.Data;
 namespace RealEstateSearchPortal.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250824132253_PricePrecisionFix")]
-    partial class PricePrecisionFix
+    [Migration("20250824184714_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -68,7 +68,7 @@ namespace RealEstateSearchPortal.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ImageUrls")
+                    b.Property<string>("ImageUrlsJson")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

@@ -12,6 +12,7 @@ namespace RealEstateSearchPortal.DTOs
         public int Bedrooms { get; set; }
         public int Bathrooms { get; set; }
         public int CarSpots { get; set; }
-        public List<string> ImageUrls { get; set; }
+        public string Description { get; set; }
+        public List<string> ImageUrlsJson { get; set; }
     }
 }

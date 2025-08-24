@@ -2,7 +2,7 @@
 using RealEstateSearchPortal.DTOs;
 using RealEstateSearchPortal.Services;
 
-namespace RealEstateSearchPortal.Controllers
+namespace RealEstatePortal.Controllers
 {
     [ApiController]
     [Route("api/auth")]
@@ -10,19 +10,37 @@ namespace RealEstateSearchPortal.Controllers
     {
         private readonly IAuthService _authService;
 
+        public AuthController(IAuthService authService)
+        {
+            _authService = authService;
+        }
+
         [HttpPost("register")]
         public async Task<IActionResult> Register(RegisterDto registerDto)
         {
-            var token = await _authService.Register(registerDto);
-            return Ok(new { Token = token });
+            try
+            {
+                var token = await _authService.Register(registerDto);
+                return Ok(new { Token = token });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { Message = ex.Message });
+            }
         }
 
         [HttpPost("login")]
         public async Task<IActionResult> Login(LoginDto loginDto)
         {
-            var token = await _authService.Login(loginDto);
-            return Ok(new { Token = token });
+            try
+            {
+                var token = await _authService.Login(loginDto);
+                return Ok(new { Token = token });
+            }
+            catch (Exception ex)
+            {
+                return Unauthorized(new { Message = ex.Message });
+            }
         }
-
     }
 }

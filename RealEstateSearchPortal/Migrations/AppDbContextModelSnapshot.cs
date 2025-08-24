@@ -65,7 +65,7 @@ namespace RealEstateSearchPortal.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ImageUrls")
+                    b.Property<string>("ImageUrlsJson")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

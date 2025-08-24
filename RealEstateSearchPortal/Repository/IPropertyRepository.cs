@@ -16,6 +16,7 @@ namespace RealEstateSearchPortal.Repository
         public decimal? MaxPrice { get; set; }
         public int? Bedrooms { get; set; }
         public string? Suburb { get; set; }
-        public ListingType? Type { get; set; }
+        //public ListingType? Type { get; set; }
+
     }
 }

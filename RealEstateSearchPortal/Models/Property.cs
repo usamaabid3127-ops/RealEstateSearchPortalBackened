@@ -1,4 +1,7 @@
-﻿namespace RealEstateSearchPortal.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json;
+
+namespace RealEstateSearchPortal.Models
 {
     public class Property
     {
@@ -11,8 +14,13 @@
         public int Bathrooms { get; set; }
         public int CarSpots { get; set; }
         public string Description { get; set; }
-        public List<string> ImageUrls { get; set; } = new();
+        public List<string> ImageUrlsJson { get; set; } = new();
         public ICollection<Favorite> Favorites { get; set; }
     }
-    public enum ListingType { Rent, Sale }
+
+    public enum ListingType
+    {
+        Rent,
+        Sale
+    }
 }
