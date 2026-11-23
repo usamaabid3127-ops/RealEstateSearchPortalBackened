@@ -69,11 +69,11 @@ resource "aws_iam_instance_profile" "backend" {
 
 resource "aws_vpc_security_group_ingress_rule" "backend_http" {
   security_group_id = aws_security_group.backend.id
-  description       = "Backend API (temporarily open, will be restricted to CloudFront)"
+  description       = "Backend API (only reachable from CloudFront)"
   from_port         = 8080
   to_port           = 8080
   ip_protocol       = "tcp"
-  cidr_ipv4         = "0.0.0.0/0"
+  prefix_list_id    = data.aws_ec2_managed_prefix_list.cloudfront.id
 }
 
 resource "aws_instance" "backend" {
@@ -132,4 +132,7 @@ output "backend_instance_id" {
 
 output "backend_public_dns" {
   value = aws_eip.backend.public_dns
+}
+data "aws_ec2_managed_prefix_list" "cloudfront" {
+  name = "com.amazonaws.global.cloudfront.origin-facing"
 }
