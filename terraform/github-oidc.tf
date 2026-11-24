@@ -30,7 +30,7 @@ data "aws_iam_policy_document" "gha_backend_trust" {
     condition {
       test     = "StringEquals"
       variable = "token.actions.githubusercontent.com:sub"
-      values   = ["repo:${local.github_owner}/${local.backend_repo}:ref:refs/heads/${local.branch}"]
+      values   = ["repo:${local.github_owner}/${local.backend_repo}:ref:refs/heads/${local.branch}", "repo:${local.github_owner}@${local.github_owner_id}/${local.backend_repo}@${local.backend_repo_id}:ref:refs/heads/${local.branch}"]
     }
   }
 }
@@ -92,7 +92,7 @@ data "aws_iam_policy_document" "gha_frontend_trust" {
     condition {
       test     = "StringEquals"
       variable = "token.actions.githubusercontent.com:sub"
-      values   = ["repo:${local.github_owner}/${local.frontend_repo}:ref:refs/heads/${local.branch}"]
+      values   = ["repo:${local.github_owner}/${local.frontend_repo}:ref:refs/heads/${local.branch}", "repo:${local.github_owner}@${local.github_owner_id}/${local.frontend_repo}@${local.frontend_repo_id}:ref:refs/heads/${local.branch}"]
     }
   }
 }
@@ -129,4 +129,9 @@ output "gha_backend_role_arn" {
 
 output "gha_frontend_role_arn" {
   value = aws_iam_role.gha_frontend.arn
+}
+locals {
+  github_owner_id  = "307182016"
+  backend_repo_id  = "1451474457"
+  frontend_repo_id = "1451473318"
 }
