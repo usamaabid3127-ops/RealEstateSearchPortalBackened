@@ -85,6 +85,10 @@ resource "aws_instance" "backend" {
   associate_public_ip_address = true
   user_data_replace_on_change = true
 
+  lifecycle {
+    ignore_changes = [ami]
+  }
+
   metadata_options {
     http_tokens = "required"
   }
